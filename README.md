@@ -56,6 +56,4 @@ Ortega, K. L., J. M. Krause, and A. V. Ryzhkov, 2016: Polarimetric Radar Charact
 
 Tang, L., J. Zhang, C. Langston, J. Krause, K. Howard, and V. Lakshmanan, 2014: A Physically Based Precipitation–Nonprecipitation Radar Echo Classifier Using Polarimetric and Environmental Data in a Real-Time National System. Wea. Forecasting, 29, 1106–1119, https://doi.org/10.1175/WAF-D-13-00072.1.  
 
-Wilson et al https://caps.ou.edu/reu/reu08/finalpapers/Wilson-finalpaper.pdf  
-
-Wilsom, C. J., Ortega, K., Lakshmanan, V., 2009: Evaluating Multi-Radar, Multi-Sensor Hail Diagnosis with High Resolution Hail Reports. https://caps.ou.edu/reu/reu08/finalpapers/Wilson-finalpaper.pdf 
+Wilson, C. J., Ortega, K., Lakshmanan, V., 2009: Evaluating Multi-Radar, Multi-Sensor Hail Diagnosis with High Resolution Hail Reports. https://caps.ou.edu/reu/reu08/finalpapers/Wilson-finalpaper.pdf 
