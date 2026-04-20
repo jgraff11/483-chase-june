@@ -1,6 +1,14 @@
-# 483-chase-june
+# Detecting Significant Hail from Radar Imagery Using a Random Forest Classifier
 
 ##1. Background
+
+A recurring problem in operational meteorology is predicting hail size with only radar data. The National Weather Service issues severe thunderstorm warnings for storms with radar-indicated hail surpassing the severe threshold (1.0 in), but issues stronger tags (considerable; destructive) for larger, significant-severe hail. The “now-casted” hail size can be an important factor in warnings, helping residents understand the danger that approaches and allowing them to act more effectively. 
+
+In lieu of reports from the public or trained weather spotters, meteorologists are left with radar data from which they can estimate hail size themselves, or alternatively, employ algorithms or techniques aid in their estimation (Donavon & Jungbluth, 2007). One commonly used algorithm using radar data is MESH (Maximum Estimated Size of Hail). MESH has room to improve, having been found to greatly overestimate larger hail sizes in even a high-resolution hail report dataset (Wilson et al., 2009).  
+
+Besides operational meteorology, this also has implications in hail research. One of the authors has experienced firsthand how limited even the best large-scale “ground truth” hail report datasets can be in several contexts, from investigating hail size associated with left-moving supercells to working towards building a hail “risk surface”. Should a more accurate way to predict hail from radar be developed, one could in theory construct a dataset of large spatial and temporal scale that could stand in for observations (or supplement them) with less uncertainty than MESH. 
+
+To improve on algorithms like MESH, we aim to use machine learning. This is a more flexible approach that can take into account more factors than just the maximum reflectivity value or environmental temperature profile.  
 
 ##2. Methods
 
