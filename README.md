@@ -1,6 +1,6 @@
 # Detecting Significant Hail from Radar Imagery Using a Random Forest Classifier
 
-##1. Background
+## I. Background
 
 A recurring problem in operational meteorology is predicting hail size with only radar data. The National Weather Service issues severe thunderstorm warnings for storms with radar-indicated hail surpassing the severe threshold (1.0 in), but issues stronger tags (considerable; destructive) for larger, significant-severe hail. The “now-casted” hail size can be an important factor in warnings, helping residents understand the danger that approaches and allowing them to act more effectively. 
 
@@ -10,7 +10,7 @@ Besides operational meteorology, this also has implications in hail research. On
 
 To improve on algorithms like MESH, we aim to use machine learning. This is a more flexible approach that can take into account more factors than just the maximum reflectivity value or environmental temperature profile.  
 
-##2. Methods
+## II. Methods
 
 Our source of hail reports is the Storm Prediction Center, which compiles reports of severe hail across the United States into a database dating back to 1955. This database includes the date, time, location, and magnitude (size) of each hail report, which is sufficient for us to gather radar data and compare it to the reported hail size. 
 
@@ -24,7 +24,7 @@ We plan to use a KMeans clustering model to differentiate between the hail sizes
 
 To find the best model possible, we will first separate training, validation, and final testing data from our dataset. We will separate these by year and compare them to the full dataset to ensure they are each representative, if not, we will find another way to separate them so that they are. The training data will be used to train the KMeans model, the validation data to make initial predictions and tweak the model, and the testing data to evaluate the finished model’s performance. 
 
-##3. Results
+## III. Results
 
 We pivoted from the KMeans clustering model to instead use a random forest, which we found was more suited to the task. Due to the sporadic nature of public reports as well as some sources of error that will be mentioned later, no clear clusters could be formed between any two features we developed. 
 
@@ -44,7 +44,7 @@ Furthermore, our ZDR-derived parameters showed very little ability to discern be
 
 Finally, we also believe that more samples could be of use. Due to the slow manual verification process and many radar files not having the products we wanted, our final sample consisted of 383 reports overall. Dedicating more time to verifying more radar imagery could prove fruitful. 
 
-##4. Works Cited
+## IV. Works Cited
 
 Cintineo, J. L., T. M. Smith, V. Lakshmanan, H. E. Brooks, and K. L. Ortega, 2012: An Objective High-Resolution Hail Climatology of the Contiguous United States. Wea. Forecasting, 27, 1235–1248, https://doi.org/10.1175/WAF-D-11-00151.1. 
 
