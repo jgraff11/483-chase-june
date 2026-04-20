@@ -1,5 +1,9 @@
 # Detecting Significant Hail from Radar Imagery Using a Random Forest Classifier
 
+June Graff, Chase Hunter
+
+<br>
+
 ## I. Background
 
 A recurring problem in operational meteorology is predicting hail size with only radar data. The National Weather Service issues severe thunderstorm warnings for storms with radar-indicated hail surpassing the severe threshold (1.0 in), but issues stronger tags (considerable; destructive) for larger, significant-severe hail. The “now-casted” hail size can be an important factor in warnings, helping residents understand the danger that approaches and allowing them to act more effectively. 
