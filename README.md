@@ -6,9 +6,7 @@ June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
 
 ### Abstract
 
-(fill this in)
-
-<hl>
+(fill this in, 150 words, mention that it can be reproduced and data downloaded in the availability statement)
 
 ### 1. Background & Motivation
 
@@ -28,7 +26,7 @@ The first step is pre-processing. Due to an excess of data and considering time 
 
 Next, we must download radar data from each report. This is simply the scan closest to the time the report was sent, taken from the radar nearest to the report. This will come from the NWS’ archived level II data, which is downloaded automatically with a script provided courtesy of Brandon Weart, with editions made to fit our project's specific needs.
 
-With radar data, we will begin by clipping the scan to only preserve where DBZ ≥ 30. While higher thresholds like 45dBz are typically used to identify hail cores (Tang et al., 2014), this more conservative approach may allow factors like storm mode to be better represented. From there, we will calculate features for our ML model, such as maximum and minimum ZDR, average DBZ, and area of ≥30dBz, ≥50dBz, etc. 
+Once radar imagery is obtained, we will begin by clipping the scan to only preserve where DBZ ≥ 30. While higher thresholds like 45dBz are typically used to identify hail cores (Tang et al., 2014), this more conservative approach may allow factors like storm mode to be better represented. From there, we will calculate features for our ML model, such as maximum and minimum ZDR, average DBZ, and area of ≥30dBz, ≥50dBz, etc. 
 
 We originally planned to use a KMeans clustering model to differentiate between the hail sizes suggested by our radar-derived features. Rather than predict exact hail size, we also set out dividing hail size into four bins: 1-2 inches, 2-3 in, 3-4 in, and 4+ in. This binned approach is more natural for KMeans, which would be able to find clusters for each hail size bin. To find the best model possible, we first separate training, validation, and final testing data from our dataset. These were separated by year and compared to the full dataset to ensure they are each representative. The training data will be used to train the KMeans model, the validation data to make initial predictions and tweak the model, and the testing data to evaluate the finished model’s performance. 
 
