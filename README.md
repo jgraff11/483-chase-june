@@ -4,13 +4,13 @@ June Graff, Chase Hunter
 
 <br>
 
-## Abstract
+### Abstract
 
 ...
 
 <br>
 
-## I. Background
+### I. Background
 
 A recurring problem in operational meteorology is predicting hail size with only radar data. The National Weather Service issues severe thunderstorm warnings for storms with radar-indicated hail surpassing the severe threshold (1.0 in), but issues stronger tags (considerable; destructive) for larger, significant-severe hail. The “now-casted” hail size can be an important factor in warnings, helping residents understand the danger that approaches and allowing them to act more effectively. 
 
@@ -20,7 +20,7 @@ Besides operational meteorology, this also has implications in hail research. On
 
 To improve on algorithms like MESH, we aim to use machine learning. This is a more flexible approach that can take into account more factors than just the maximum reflectivity value or environmental temperature profile.  
 
-## II. Methods
+### II. Methods
 
 Our source of hail reports is the Storm Prediction Center, which compiles reports of severe hail across the United States into a database dating back to 1955. This database includes the date, time, location, and magnitude (size) of each hail report, which is sufficient for us to gather radar data and compare it to the reported hail size. 
 
@@ -34,7 +34,7 @@ We plan to use a KMeans clustering model to differentiate between the hail sizes
 
 To find the best model possible, we will first separate training, validation, and final testing data from our dataset. We will separate these by year and compare them to the full dataset to ensure they are each representative, if not, we will find another way to separate them so that they are. The training data will be used to train the KMeans model, the validation data to make initial predictions and tweak the model, and the testing data to evaluate the finished model’s performance. 
 
-## III. Results
+### III. Results
 
 We pivoted from the KMeans clustering model to instead use a random forest, which we found was more suited to the task. Due to the sporadic nature of public reports as well as some sources of error that will be mentioned later, no clear clusters could be formed between any two features we developed. 
 
@@ -56,15 +56,15 @@ Finally, this sample size is smaller than ideal for the task at hand. Due to the
 
 <br>
 
-## Availability Statement
+### Availability Statement
 
 The data needed for this project can be freely downloaded from <a href="https://niuits-my.sharepoint.com/:f:/g/personal/z2046057_students_niu_edu/IgARaqWHMUw7QpUnIpZPGc8KARJWsmG79ckiXBSJVaEPzP0?e=uYpbig">this public OneDrive</a>. `hail_v4.csv` is the final version of the file we used to train our model, and all data in it have been manually verified. To reproduce our process, you may download `1955-2024_hail.csv`, which is identical to the file found on <a href="https://www.spc.noaa.gov/wcm/#data">SPC's severe weather database page</a>.
 
-## Acknowledgements
+### Acknowledgements
 
 The authors would like to thank Dr. Haberlie for his guidance and patience during this project, and Brandon Weart for his contributions to the radar-downloading script.
 
-## IV. Works Cited
+### IV. Works Cited
 
 Cintineo, J. L., T. M. Smith, V. Lakshmanan, H. E. Brooks, and K. L. Ortega, 2012: An Objective High-Resolution Hail Climatology of the Contiguous United States. Wea. Forecasting, 27, 1235–1248, https://doi.org/10.1175/WAF-D-11-00151.1. 
 
