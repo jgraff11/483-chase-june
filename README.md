@@ -6,7 +6,7 @@ June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
 
 ### Abstract
 
-(ab stract)
+
 
 ### Usage & Replicability:
 
