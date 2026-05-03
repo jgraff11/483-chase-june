@@ -8,7 +8,7 @@ June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
 
 (ab stract)
 
-#### Usage & Replicability:
+### Usage & Replicability:
 
 This repository contains three python notebooks, labeled by their order in the project workflow. 
 1. PRE-PROCESSING: Starting with a hand-compiled list of NEXRAD radar locations and the SPC's hail report database and ending with a filtered, processed version that may then be used to gather radar data and continue the next steps.
@@ -16,6 +16,10 @@ This repository contains three python notebooks, labeled by their order in the p
 3. RANDOM FOREST: With the final version of the dataset including all calculated features, the random forest model is trained, improved, and finally evaluated.
 
 Our results can be replicated by following through the notebooks included in this repository. All necessary data can be freely downloaded from the public OneDrive in the availability statement. Each notebook contains instructions for downloading the necessary data, listing which files should be uploaded.
+
+### Significance Statement
+
+Doppler radar data is central to our understanding of severe thunderstorms. Despite this, current algorithms that detect hail size from radar are often very inaccurate, which is an obstacle to meteorologists' ability to issue accurate warnings or conduct research. Improving upon existing algorithms could improve accuracy of severe thunderstorm warnings, more appropriately informing people in harm's way. It could also improve our understanding of severe hail as a whole, by creating more accurate datasets than what currently exists, reducing errors and uncertainty in scientists' findings.
 
 ### 1. Background & Motivation
 
