@@ -4,6 +4,12 @@ June Graff, Chase Hunter
 
 <br>
 
+## Abstract
+
+...
+
+<br>
+
 ## I. Background
 
 A recurring problem in operational meteorology is predicting hail size with only radar data. The National Weather Service issues severe thunderstorm warnings for storms with radar-indicated hail surpassing the severe threshold (1.0 in), but issues stronger tags (considerable; destructive) for larger, significant-severe hail. The “now-casted” hail size can be an important factor in warnings, helping residents understand the danger that approaches and allowing them to act more effectively. 
@@ -44,9 +50,19 @@ While the exact criteria are different, we do see a similar bias to MESH, in whi
 
 It is unclear how much this can be improved given the limitations of public hail reports themselves, but we do believe we have identified some sources of error that could be improved in the future. As alluded to previously, a single randomly-selected report does not consistently represent a storm. It could be the peak hail size, some of the smallest hail, or somewhere in-between. A future step we did not previously consider would be to verify that only the largest report from each individual storm would be used, i.e. removing all but the largest report that took place within a certain lat/lon and time. This would prevent some inconsistency in how well the randomly sampled report actually represents its storm. 
 
-Furthermore, our ZDR-derived parameters showed very little ability to discern between hail sizes. Despite filtering out typically noisy values (>5 and <-2), the maximum and minimum ZDR tends to be almost identical for each storm (right up against either limit) even after masking to DBZ ≥ 30. This is likely due to the influence of noisy values even within the area influenced by convective precipitation. It is not clear how to fix this exactly, but we could in theory look at ZDR minima sustained over a broader area, eliminating the influence that single noisy pixels can have on overall max/mins. 
+Furthermore, our ZDR-derived parameters showed very little ability to discern between hail sizes. Despite filtering out typically noisy values (>5 and <-2), the maximum and minimum ZDR tends to be almost identical for each storm (right up against either limit) even after masking to DBZ ≥ 30. This is likely due to the influence of noisy values even within the area influenced by convective precipitation. It is not clear how to fix this exactly, but we could in theory look at ZDR minima sustained over an area, eliminating the influence that single noisy pixels can have on overall max/mins.
 
-Finally, we also believe that more samples could be of use. Due to the slow manual verification process and many radar files not having the products we wanted, our final sample consisted of 383 reports overall. Dedicating more time to verifying more radar imagery could prove fruitful. 
+Finally, this sample size is smaller than ideal for the task at hand. Due to the slow manual verification process and many radar files not having the products we wanted, our final sample consisted of 383 reports overall. Dedicating more time to verifying more radar imagery or building an automatic or hybrid verification system could prove fruitful. 
+
+<br>
+
+## Availability Statement
+
+The data needed for this project can be freely downloaded from <a href="https://niuits-my.sharepoint.com/:f:/g/personal/z2046057_students_niu_edu/IgARaqWHMUw7QpUnIpZPGc8KARJWsmG79ckiXBSJVaEPzP0?e=uYpbig">this public OneDrive</a>. `hail_v4.csv` is the final version of the file we used to train our model, and all data in it have been manually verified. To reproduce our process, you may download `1955-2024_hail.csv`, which is identical to the file found on <a href="https://www.spc.noaa.gov/wcm/#data">SPC's severe weather database page</a>.
+
+## Acknowledgements
+
+The authors would like to thank Dr. Haberlie for his guidance and patience during this project, and Brandon Weart for his contributions to the radar-downloading script.
 
 ## IV. Works Cited
 
