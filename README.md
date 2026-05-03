@@ -6,7 +6,16 @@ June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
 
 ### Abstract
 
-(fill this in, 150 words, mention that it can be reproduced and data downloaded in the availability statement)
+(ab stract)
+
+#### Usage & Replicability:
+
+This repository contains three python notebooks, labeled by their order in the project workflow. 
+1. PRE-PROCESSING: Starting with a hand-compiled list of NEXRAD radar locations and the SPC's hail report database and ending with a filtered, processed version that may then be used to gather radar data and continue the next steps.
+2. RADAR & VERIFICATION: Using the intermediate hail dataset (either found in the OneDrive or obtained from running notebook 1), relevant radar imagery is downloaded for each report and manually verified by the user. Afterwards, with a list of the indices the user deems to be valid radar imagery, features are calculated and saved in a final version of the dataset.
+3. RANDOM FOREST: With the final version of the dataset including all calculated features, the random forest model is trained, improved, and finally evaluated.
+
+Our results can be replicated by following through the notebooks included in this repository. All necessary data can be freely downloaded from the public OneDrive in the availability statement. Each notebook contains instructions for downloading the necessary data, listing which files should be uploaded.
 
 ### 1. Background & Motivation
 
