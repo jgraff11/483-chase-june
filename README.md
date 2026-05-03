@@ -29,7 +29,8 @@ In lieu of reports from the public or trained weather spotters, meteorologists a
 
 Besides operational meteorology, this also has implications in hail research. One of the authors has experienced firsthand how limited even the best large-scale “ground truth” hail report datasets can be in several contexts, from investigating hail size associated with left-moving supercells to working towards building a hail “risk surface”. Should a more accurate way to predict hail from radar be developed, one could in theory construct a dataset of large spatial and temporal scale that could stand in for observations (or supplement them) with less uncertainty than MESH. 
 
-To improve on algorithms like MESH, we aim to use machine learning. This is a more flexible approach that can take into account more factors than just the maximum reflectivity value or environmental temperature profile.  
+To improve on algorithms like MESH, we aim to use machine learning. This is a more flexible approach that can take into account more factors than just the maximum reflectivity value or environmental temperature profile.
+<br>
 
 ### 2. Data & Methods
 
@@ -61,7 +62,7 @@ hail_train = hail_data[hail_data['yr'] <= 2016]
 hail_val = hail_data[(hail_data['yr'] == 2017) | (hail_data['yr'] == 2018)]
 hail_test = hail_data[(hail_data['yr'] == 2019) | (hail_data['yr'] == 2020)]
 ```
-
+<br>
 
 ### 3. Feasibility
 
@@ -72,6 +73,7 @@ Both of us at least have part of the requisite knowledge and feel that we will b
 This project will make use of as much hail report data as we can get our hands on. The SPC hail report database is a 43 MB file containing data from over 400,000 hail reports. We will not be using nearly all of these reports, though—due to the large temporal variation, many thousands of reports in this dataset would not have radar data from which we can calculate our variables. Additionally, we aim to filter reports based on the availability of radar data as well as reports’ proximity to the radar site, ensuring quality of data and that the scans we use are of similar elevation. 
 
 While we have not worked with machine learning before, we will learn about its use in this course and we feel we will be able to learn on our feet. We have a picture of what we want to accomplish, and clear focus on what steps we can take to complete those goals. Although a central focus of the project is machine learning, a topic in which neither of us are experienced, we are both familiar with Python and are confident that we are already able to perform every other task necessary for completing this project. Thus, we feel this project is appropriate for our level of experience – it will challenge us and force us to learn, but at the same time we do not expect to be overwhelmed. 
+<br>
 
 ### 4. Potential Issues
 
@@ -80,6 +82,7 @@ The main issue we expect to face is the lack of experience in machine learning. 
 Beyond that, we might run into issues with the quality of the data we’re working with. While the SPC hail report dataset is quality-controlled, there might still be issues with the timing of the reports being variable, not necessarily lining up with the most suitable radar timestamp for analysis. Furthermore, since the database is composed of crowdsourced, public reports which will be inconsistent by nature, the hail reports we analyze may not always capture the true intensity of the storm we analyze. 
 
 The radar data may have issues of its own. We are not entirely sure that all radar files going back to the beginning of our dataset will include all products we’re looking for. We don’t know when exactly dual-pol products like ZDR and CC were first made available or if they became available on all radar sites around the same time, but if any of our radar data is missing that we will have to exclude it to be able to calculate all variables for all data points. 
+<br>
 
 ### 5. Timeline
 
@@ -168,6 +171,7 @@ Beyond that, a promising example of machine learning applications for hail size 
 Furthermore, our ZDR-derived parameters showed very little ability to discern between hail sizes. Despite filtering out typically noisy values (>5 and <-2), the maximum and minimum ZDR tends to be almost identical for each storm (right up against either limit) even after masking to DBZ ≥ 30. This is likely due to the influence of noisy values even within the area influenced by convective precipitation. It is not clear how to fix this exactly, but we could in theory look at ZDR minima sustained over a broader area, eliminating the influence that single noisy pixels can have on overall max/mins.
 
 Finally, this sample size is smaller than ideal for the task at hand. Due to the slow manual verification process and many radar files not having the products we wanted, our final sample consisted of 383 reports overall. Dedicating more time to verifying more radar imagery or building an automatic or hybrid verification system could prove fruitful. 
+<br>
 
 ### 7. Summary & Discussion
 
@@ -178,6 +182,7 @@ Our random forest classifier was trained using SPC’s hail report database and 
 The most important single change that future work may benefit from is a larger sample size, as alluded to previously. A larger manually verified dataset should be compiled, or a hybrid or automatic verification system should be developed. Cases should be chosen not from the 2011-2020 period we selected, but from something closer to 2015-2024, if the 10-year time frame is still desired. This is to avoid cases in the early 2010s before dual-polarization products were fully implemented. Finally, future work may more closely examine the most important variables to our random forest model, which have the largest impact on hail size prediction. The patterns of false negatives/positives may also shed light on what more can be done to improve the model.
 
 This model or a similar one could in theory be applied automatically, unlike more manual heuristics (such as Donavon & Jungbluth, 2007), which could ease the burden on a warning meteorologist. It could also aid in hail research to create climatologies similar to what is already available using MESH (Murillo et al., 2021; Cintineo et al., 2012). Still, there are improvements to be made before it is suitable for operational use.
+<br>
 
 ### Availability Statement
 
