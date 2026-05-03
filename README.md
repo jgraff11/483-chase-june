@@ -1,6 +1,8 @@
 # Detecting Significant Hail from Radar Imagery Using a Random Forest Classifier
 
-June Graff, Chase Hunter
+June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
+
+<sup>1</sup> Northern Illinois University
 
 <br>
 
@@ -10,7 +12,7 @@ June Graff, Chase Hunter
 
 <br>
 
-### I. Background
+### 1. Background & Motivation
 
 A recurring problem in operational meteorology is predicting hail size with only radar data. The National Weather Service issues severe thunderstorm warnings for storms with radar-indicated hail surpassing the severe threshold (1.0 in), but issues stronger tags (considerable; destructive) for larger, significant-severe hail. The “now-casted” hail size can be an important factor in warnings, helping residents understand the danger that approaches and allowing them to act more effectively. 
 
@@ -20,7 +22,7 @@ Besides operational meteorology, this also has implications in hail research. On
 
 To improve on algorithms like MESH, we aim to use machine learning. This is a more flexible approach that can take into account more factors than just the maximum reflectivity value or environmental temperature profile.  
 
-### II. Methods
+### 2. Data & Methods
 
 Our source of hail reports is the Storm Prediction Center, which compiles reports of severe hail across the United States into a database dating back to 1955. This database includes the date, time, location, and magnitude (size) of each hail report, which is sufficient for us to gather radar data and compare it to the reported hail size. 
 
@@ -34,27 +36,121 @@ We plan to use a KMeans clustering model to differentiate between the hail sizes
 
 To find the best model possible, we will first separate training, validation, and final testing data from our dataset. We will separate these by year and compare them to the full dataset to ensure they are each representative, if not, we will find another way to separate them so that they are. The training data will be used to train the KMeans model, the validation data to make initial predictions and tweak the model, and the testing data to evaluate the finished model’s performance. 
 
-### III. Results
+### 3. Feasibility
 
-We pivoted from the KMeans clustering model to instead use a random forest, which we found was more suited to the task. Due to the sporadic nature of public reports as well as some sources of error that will be mentioned later, no clear clusters could be formed between any two features we developed. 
+While some similar projects have been done before (Ortega et al. 2016), we could not find any previous research on this exact concept, i.e. applying machine learning directly to radar imagery alone to estimate hail size.  
 
-One (partially) unforeseen obstacle was the unreliability of radar data. While some files indeed lacked the ZDR and CC products we were looking for, removing those was trivial. The greater issue was that some scans were, in the area around our report, completely empty, partially empty (with an unnatural straight line cutting everything off suggesting some sort of corrupted or malformed data), or clearly representing a delayed report (no appreciable reflectivity returns near the report, which was likely sent after the storms moved out or dissipated). To mitigate this, we ended up having to manually verify several hundred reflectivity images. This took a lot of time and bottlenecked our process, leaving us with a decreased (but verified) sample. 
+Both of us at least have part of the requisite knowledge and feel that we will be able to learn everything we need to as we go. Specifically, both of us have used Python before and passed EAE 493, but we currently lack experience in machine learning. We believe that over the course of the semester, we will be able to learn enough both from this course and from our own trial and error that this project is feasible. Also of note, one of us has used Python more extensively in a research setting, making adaptation to this course project smoother.  
 
-The random forest model was trained using only data from 2011-2016, validated and adjusted with data from 2017-2018, then given its final test with data from 2019-2020. 
+This project will make use of as much hail report data as we can get our hands on. The SPC hail report database is a 43 MB file containing data from over 400,000 hail reports. We will not be using nearly all of these reports, though—due to the large temporal variation, many thousands of reports in this dataset would not have radar data from which we can calculate our variables. Additionally, we aim to filter reports based on the availability of radar data as well as reports’ proximity to the radar site, ensuring quality of data and that the scans we use are of similar elevation. 
 
-Another difficulty we did not anticipate was the model simply performing very poorly with the original four hail size bins. Due to the small sample, we simply did not have enough representative cases for the larger bins, leading to hail size often being overestimated. Early iterations of the model received F-scores near 0.45, which is inadequate. To compensate, we adjusted our goalposts to instead only worry about sig-severe versus non-sig-severe hail (above or below the threshold of 2 inches). 
+While we have not worked with machine learning before, we will learn about its use in this course and we feel we will be able to learn on our feet. We have a picture of what we want to accomplish, and clear focus on what steps we can take to complete those goals. Although a central focus of the project is machine learning, a topic in which neither of us are experienced, we are both familiar with Python and are confident that we are already able to perform every other task necessary for completing this project. Thus, we feel this project is appropriate for our level of experience – it will challenge us and force us to learn, but at the same time we do not expect to be overwhelmed. 
 
-After reviewing expectations and updating our model, we received an initial F-score of 0.68 for our validation data. Looping through about seventy different configurations and picking the most skillful one, our final random forest model has an F-score of 0.70. This is far from ideal but shows great improvement from previous iterations. 
+### 4. Potential Issues
 
-While the exact criteria are different, we do see a similar bias to MESH, in which we observe more erroneous predictions of large hail than we do of small hail (Wilson et al., 2009).  
+The main issue we expect to face is the lack of experience in machine learning. Both group members have experience in Python, but none in machine learning. We will have to learn a lot as we go and may need to adapt already existing parts of our project as we learn more about how to efficiently use machine learning. 
 
-It is unclear how much this can be improved given the limitations of public hail reports themselves, but we do believe we have identified some sources of error that could be improved in the future. As alluded to previously, a single randomly-selected report does not consistently represent a storm. It could be the peak hail size, some of the smallest hail, or somewhere in-between. A future step we did not previously consider would be to verify that only the largest report from each individual storm would be used, i.e. removing all but the largest report that took place within a certain lat/lon and time. This would prevent some inconsistency in how well the randomly sampled report actually represents its storm. 
+Beyond that, we might run into issues with the quality of the data we’re working with. While the SPC hail report dataset is quality-controlled, there might still be issues with the timing of the reports being variable, not necessarily lining up with the most suitable radar timestamp for analysis. Furthermore, since the database is composed of crowdsourced, public reports which will be inconsistent by nature, the hail reports we analyze may not always capture the true intensity of the storm we analyze. 
 
-Furthermore, our ZDR-derived parameters showed very little ability to discern between hail sizes. Despite filtering out typically noisy values (>5 and <-2), the maximum and minimum ZDR tends to be almost identical for each storm (right up against either limit) even after masking to DBZ ≥ 30. This is likely due to the influence of noisy values even within the area influenced by convective precipitation. It is not clear how to fix this exactly, but we could in theory look at ZDR minima sustained over an area, eliminating the influence that single noisy pixels can have on overall max/mins.
+The radar data may have issues of its own. We are not entirely sure that all radar files going back to the beginning of our dataset will include all products we’re looking for. We don’t know when exactly dual-pol products like ZDR and CC were first made available or if they became available on all radar sites around the same time, but if any of our radar data is missing that we will have to exclude it to be able to calculate all variables for all data points. 
+
+### 5. Timeline
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Estimate</th>
+      <th>Confidence</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gather report and radar data</td>
+      <td>&lt; 1 week</td>
+      <td>Great (4/4)</td>
+      <td>SPC report data already acquired, we need to figure out how to download data.</td>
+    </tr>
+    <tr>
+      <td>Preprocess report data</td>
+      <td>2 weeks</td>
+      <td>Good (3/4)</td>
+      <td>We have done similar preprocessing before, but difficulty may come from calculating the distance between reports and radar sites.</td>
+    </tr>
+    <tr>
+      <td>Train ML model; get swath data</td>
+      <td>4 weeks</td>
+      <td>Poor (1/4)</td>
+      <td>Neither of us have trained a machine learning model before and this will be a learning experience.</td>
+    </tr>
+    <tr>
+      <td>Further analysis with swaths</td>
+      <td>2? weeks</td>
+      <td>Fair (2/4)</td>
+      <td>How much analysis (swath characteristics/climo, MESH, etc) we can do depends on how long the previous step takes, so it’s hard to be sure of the timeline.</td>
+    </tr>
+    <tr>
+      <td>Write report</td>
+      <td>1 week</td>
+      <td>Fair (2/4)</td>
+      <td>One group member has done limited scientific writing and the other has no experience.</td>
+    </tr>
+  </tbody>
+</table>
+
+### 6. Results
+
+As discussed previously, we pivoted away from the KMeans clustering model to instead use a random forest classifier, which we found was more suited to the task. Perhaps due to the sporadic nature of public reports as well as some sources of error that will be mentioned later, no clear clusters could be formed between any two features we developed. 
+
+https://link.springer.com/article/10.1023/A:1010933404324 random paper about random forests 
+
+One (partially) unforeseen obstacle was the unreliability of radar data. While some files indeed lacked the ZDR and CC products we were looking for, removing those was trivial. The greater issue was that some scans were, in the area around our report, completely empty, partially empty (with an unnatural straight line cutting everything off suggesting some sort of corrupted or malformed data), or clearly representing a delayed report (no appreciable reflectivity returns near the report, which was likely sent after the storms moved out or dissipated). To mitigate this, we ended up having to manually verify several hundred reflectivity images. This was very time-consuming and bottlenecked our process, leaving us with a decreased (but verified) sample.
+
+![Hail report verification process](img/fig2.png)
+Fig. 2: From the manual verification process, the top two radar images were rejected for being incomplete or clearly delayed/mismatched. The bottom two were accepted as the domain contains reflectivity returns plausibly matching the hail report, even if the report was slightly delayed.
+
+Using the code below, the random forest model was trained using only data from 2011-2016, validated and adjusted with data from 2017-2018, then given its final test with data from 2019-2020. These subsets were separated by year to ensure their independence, which is critical to the integrity of our model.
+
+```
+hail_train = hail_data[hail_data['yr'] <= 2016]
+hail_val = hail_data[(hail_data['yr'] == 2017) | (hail_data['yr'] == 2018)]
+hail_test = hail_data[(hail_data['yr'] == 2019) | (hail_data['yr'] == 2020)]
+```
+
+Another difficulty we did not anticipate was, as mentioned previously, the model performing very poorly with the original four hail size bins. Our small sample did not contain nearly enough cases to properly represent the larger bins, leading to hail size often being greatly overestimated. Early iterations of the model received F1-scores near 0.45, which is inadequate. To compensate, we moved our goalposts to instead only worry about sig-severe versus non-sig-severe hail (above or below the threshold of 2 inches). After reviewing expectations and updating our model, we received an initial F-score of 0.68 for our validation data.
+
+We then aimed to improve the model by testing different configurations of hyperparameters. Looping through about seventy combinations (from the lists shown in the code chunk below) and picking the most skillful one by F1-score, our final random forest model received an F1-score of 0.68 for the validation data. This is far from ideal but shows notable improvement from previous iterations. Our model configuration of choice used max_depth = 10, n_estimators = 200, min_samples_leaf = 1, and max_features = log2.
+
+```
+depths = [3, 5, 7, 10]
+n_estimators = [50, 100, 200]
+minleaves = [1, 2, 5]
+max_features_opts = ['sqrt', 'log2']
+```
+
+Finally, predicting our testing subset with the random forest classifier yielded an F1-score of 0.70. Notably, as seen in Fig. 3 below, the model more often overestimates than underestimates hail size, i.e. it is more likely to erroneously predict significant-severe hail. While the exact numbers are different, a similar bias is seen in MESH, in which we observe more erroneous predictions of large hail than we do of small hail (Wilson et al., 2009).  
+
+![Validation confusion matrix](img/fig3a.png)![Testing confusion matrix](img/fig3b.png)
+Figure 3: Confusion matrices for validation and testing data. The F1-scores were 0.68 and 0.70, respectively.
+
+It is unclear how far this model can be improved given the limitations of public hail reports themselves, but we do believe we have identified some sources of error that could be improved in the future. As alluded to previously, a single randomly selected report does not consistently represent a storm. It could be the peak hail size, some of the smallest hail, or somewhere in-between. A future step we did not previously consider would be to verify that only the largest report from each individual storm would be used, i.e. removing all but the largest report that took place within a certain lat/lon and time. This would prevent some inconsistency in how well the randomly sampled report actually represents its storm. 
+
+Furthermore, our ZDR-derived parameters showed very little ability to discern between hail sizes. Despite filtering out typically noisy values (>5 and <-2), the maximum and minimum ZDR tends to be almost identical for each storm (right up against either limit) even after masking to DBZ ≥ 30. This is likely due to the influence of noisy values even within the area influenced by convective precipitation. It is not clear how to fix this exactly, but we could in theory look at ZDR minima sustained over a broader area, eliminating the influence that single noisy pixels can have on overall max/mins.
 
 Finally, this sample size is smaller than ideal for the task at hand. Due to the slow manual verification process and many radar files not having the products we wanted, our final sample consisted of 383 reports overall. Dedicating more time to verifying more radar imagery or building an automatic or hybrid verification system could prove fruitful. 
 
-<br>
+### 7. Summary
+
+We set out with the aim of using mPING reports alongside SPC reports to map out hail swaths, but we never obtained permission and had to pivot our project’s focus entirely. We settled on hail size prediction from radar imagery hoping to improve our current algorithms like MESH that, while useful, have known biases and cannot be taken at face value. 
+
+Our random forest model was trained using SPC’s hail report database and NWS-archived Level II radar imagery. It was iterated upon using separate training, validation and testing datasets and was selected as the best of many different possible configurations. 
+
+Our model has improved significantly since its inception but still leaves a lot to be desired. It currently earns an F-score of 0.70 and shows a similar bias to MESH, the MRMS product we sought to improve upon. 
+
+The most important single change that future work may benefit from is a larger sample size, as alluded to previously. A larger manually verified dataset should be compiled, or a hybrid or automatic verification system should be developed. Cases should be chosen not from the 2011-2020 period we selected, but from something closer to 2015-2024, if the 10-year time frame is still desired. This is to avoid cases in the early 2010s before dual-polarization products were fully implemented. Finally, future work may more closely examine the most important variables to our random forest model, which have the largest impact on hail size prediction. The patterns of false negatives/positives may also shed light on what more can be done to improve the model.
+
+This model or a similar one could in theory be applied automatically, unlike more manual heuristics (such as Donavon & Jungbluth, 2007), which could ease the burden on a warning meteorologist. It could also aid in hail research to create climatologies similar to what is already available using MESH (Murillo et al., 2021; Cintineo et al., 2012). Still, there are improvements to be made before it is suitable for operational use.
 
 ### Availability Statement
 
@@ -64,7 +160,7 @@ The data needed for this project can be freely downloaded from <a href="https://
 
 The authors would like to thank Dr. Haberlie for his guidance and patience during this project, and Brandon Weart for his contributions to the radar-downloading script.
 
-### IV. Works Cited
+### Works Cited
 
 Cintineo, J. L., T. M. Smith, V. Lakshmanan, H. E. Brooks, and K. L. Ortega, 2012: An Objective High-Resolution Hail Climatology of the Contiguous United States. Wea. Forecasting, 27, 1235–1248, https://doi.org/10.1175/WAF-D-11-00151.1. 
 
