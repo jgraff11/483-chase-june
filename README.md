@@ -62,7 +62,6 @@ hail_train = hail_data[hail_data['yr'] <= 2016]
 hail_val = hail_data[(hail_data['yr'] == 2017) | (hail_data['yr'] == 2018)]
 hail_test = hail_data[(hail_data['yr'] == 2019) | (hail_data['yr'] == 2020)]
 ```
-<br>
 
 ### 3. Feasibility
 
