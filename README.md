@@ -143,7 +143,8 @@ max_features = ['sqrt', 'log2']
 Finally, predicting our testing subset with the random forest classifier yielded an F1-score of 0.70. Notably, as seen in Fig. 3 below, the model more often overestimates than underestimates hail size, i.e. it is more likely to erroneously predict significant-severe hail. While the exact numbers are different, a similar bias is seen in MESH, in which we observe more erroneous predictions of large hail than we do of small hail (Wilson et al., 2009). Further comparison to MESH is regrettably difficult due to our pivot away from predicting actual hail size.
 
 ![Validation confusion matrix](img/fig3a.png)![Testing confusion matrix](img/fig3b.png)
-Figure 3: Side-by-side confusion matrices for validation and testing data. The F1-scores were 0.68 and 0.70, respectively.
+
+Figure 3: confusion matrices for validation and testing data. The F1-scores were 0.68 and 0.70, respectively.
 
 <br>
 
