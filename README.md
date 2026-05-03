@@ -1,8 +1,8 @@
-# Detecting Significant Hail from Radar Imagery Using a Random Forest Classifier
+<h1 style="text-align: center;">Detecting Significant Hail from Radar Imagery Using a Random Forest Classifier</h1>
 
-June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
+<p style="text-align: center;">June Graff<sup>1</sup>, Chase Hunter<sup>1</sup></p>
 
-<sup>1</sup> Northern Illinois University
+<p style="text-align: center;"><sup>1</sup> Northern Illinois University</p>
 
 ### Abstract
 
