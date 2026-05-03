@@ -33,7 +33,7 @@ We originally planned to use a KMeans clustering model to differentiate between 
 Despite our initial plans, we quickly realized the the KMeans approach was not suitable. As is clear in Fig. 1 below, there was no combination of features that resulted in clear clusters that discriminated between severe (1-2") and significant-severe (2+”) hail reports, let alone our initial goal of 1-inch size bins. This finding meant the project had to be pivoted in two distinct, significant ways.
 
 ![Comparison of radar-derived variables](img/fig1.png)
-Fig. 1: Radar-derived features of severe and significant-severe hail reports.
+Figure 1: Radar-derived features of severe and significant-severe hail reports.
 
 <br>
 
