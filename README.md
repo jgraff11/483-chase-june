@@ -163,6 +163,8 @@ Figure 3: confusion matrices for validation and testing data. The F1-scores were
 
 It is unclear how far this model can be improved given the limitations of public hail reports themselves, but we do believe we have identified some sources of error that could be improved in the future. As alluded to previously, a single randomly selected report does not consistently represent a storm. It could be the peak hail size, some of the smallest hail, or somewhere in-between. A future step we did not previously consider would be to verify that only the largest report from each individual storm would be used, i.e. removing all but the largest report that took place within a certain lat/lon and time. This would prevent some inconsistency in how well the randomly sampled report actually represents its storm. 
 
+Beyond that, a promising example of machine learning applications for hail size is the work of Gagne et al. (2015). While that study did not use radar data directly as we did, their machine learning models were able to predict MESH data with lower error compared to physically-based models. They found that, at least in their forecasting application, machine learning approaches can offer advantages when it comes to hail size prediction.
+
 Furthermore, our ZDR-derived parameters showed very little ability to discern between hail sizes. Despite filtering out typically noisy values (>5 and <-2), the maximum and minimum ZDR tends to be almost identical for each storm (right up against either limit) even after masking to DBZ ≥ 30. This is likely due to the influence of noisy values even within the area influenced by convective precipitation. It is not clear how to fix this exactly, but we could in theory look at ZDR minima sustained over a broader area, eliminating the influence that single noisy pixels can have on overall max/mins.
 
 Finally, this sample size is smaller than ideal for the task at hand. Due to the slow manual verification process and many radar files not having the products we wanted, our final sample consisted of 383 reports overall. Dedicating more time to verifying more radar imagery or building an automatic or hybrid verification system could prove fruitful. 
@@ -192,6 +194,8 @@ Breiman, L., 2001: Random Forests. Machine Learning, 45, 5–32, https://link.sp
 Cintineo, J. L., T. M. Smith, V. Lakshmanan, H. E. Brooks, and K. L. Ortega, 2012: An Objective High-Resolution Hail Climatology of the Contiguous United States. Wea. Forecasting, 27, 1235–1248, https://doi.org/10.1175/WAF-D-11-00151.1. 
 
 Donavon, R. A., and K. A. Jungbluth, 2007: Evaluation of a Technique for Radar Identification of Large Hail across the Upper Midwest and Central Plains of the United States. Wea. Forecasting, 22, 244–254, https://doi.org/10.1175/WAF1008.1. 
+
+Gagne, D. J., A. McGovern, J. Brotzge, M. Coniglio, J. Correia Jr., and M. Xue, 2015: Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models. AAAI Conference on Artificial Intelligence, 29, 3954-3960, https://doi.org/10.1609/aaai.v29i2.19053.
 
 Murillo, E. M., C. R. Homeyer, and J. T. Allen, 2021: A 23-Year Severe Hail Climatology Using GridRad MESH Observations. Mon. Wea. Rev., 149, 945–958, https://doi.org/10.1175/MWR-D-20-0178.1. 
 
