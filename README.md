@@ -4,13 +4,11 @@ June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
 
 <sup>1</sup> Northern Illinois University
 
-<br>
-
 ### Abstract
 
-...
+(fill this in)
 
-<br>
+<hl>
 
 ### 1. Background & Motivation
 
@@ -169,7 +167,7 @@ This model or a similar one could in theory be applied automatically, unlike mor
 
 ### Availability Statement
 
-The data needed for this project can be freely downloaded from <a href="https://niuits-my.sharepoint.com/:f:/g/personal/z2046057_students_niu_edu/IgARaqWHMUw7QpUnIpZPGc8KARJWsmG79ckiXBSJVaEPzP0?e=uYpbig">this public OneDrive</a>. `hail_v4.csv` is the final version of the file we used to train our model, and all data in it have been manually verified. To reproduce our process, you may download `1955-2024_hail.csv`, which is identical to the file found on <a href="https://www.spc.noaa.gov/wcm/#data">SPC's severe weather database page</a>.
+The data needed for this project can be freely downloaded from <a href="https://niuits-my.sharepoint.com/:f:/g/personal/z2046057_students_niu_edu/IgARaqWHMUw7QpUnIpZPGc8KARJWsmG79ckiXBSJVaEPzP0?e=uYpbig">this public OneDrive</a>. `hail_v4.csv` is the final version of the file we used to train our model, and all data in it have been manually verified by the authors. To reproduce our process, you may download `1955-2024_hail.csv`, which is identical to the file found on <a href="https://www.spc.noaa.gov/wcm/#data">SPC's severe weather database page</a>.
 
 ### Acknowledgements
 
@@ -177,7 +175,7 @@ The authors would like to thank Dr. Haberlie for his guidance and patience durin
 
 ### References
 
-Breiman, L., 2001: Random Forests. https://link.springer.com/article/10.1023/A:1010933404324.
+Breiman, L., 2001: Random Forests. Machine Learning, 45, 5–32, https://link.springer.com/article/10.1023/A:1010933404324.
 
 Cintineo, J. L., T. M. Smith, V. Lakshmanan, H. E. Brooks, and K. L. Ortega, 2012: An Objective High-Resolution Hail Climatology of the Contiguous United States. Wea. Forecasting, 27, 1235–1248, https://doi.org/10.1175/WAF-D-11-00151.1. 
 
