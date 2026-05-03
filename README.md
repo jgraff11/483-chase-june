@@ -37,7 +37,9 @@ We originally planned to use a KMeans clustering model to differentiate between 
 Despite our initial plans, we quickly realized the the KMeans approach was not suitable. As is clear in Fig. 1 below, there was no combination of features that resulted in clear clusters that discriminated between severe (1-2") and significant-severe (2+”) hail reports, let alone our initial goal of 1-inch size bins. This finding meant the project had to be pivoted in two distinct, significant ways.
 
 ![Comparison of radar-derived variables](img/fig1.png)
-Fig. 1: Radar-derived features of severe and significant-severe hail reports.<br>
+Fig. 1: Radar-derived features of severe and significant-severe hail reports.
+
+<br>
 
 Firstly, it was clear that KMeans was not the correct choice of model for this question. Instead, we selected a random forest classifier model. We found the random forest classifier to significantly outperform the KMeans model and a single decision tree. More details about model selection rationale and improvement are in the Results section.
 
@@ -114,14 +116,18 @@ The radar data may have issues of its own. We are not entirely sure that all rad
     </tr>
   </tbody>
 </table>
-Table 1: Project timeline<br>
+Table 1: Project timeline
+
+<br>
 
 ### 6. Results
 
 One (partially) unforeseen obstacle was the unreliability of radar data. While some files indeed lacked the ZDR and CC products we were looking for, removing those was trivial. The greater issue was that some scans were, in the area around our report, completely empty, partially empty (with an unnatural straight line cutting everything off suggesting some sort of corrupted or malformed data), or clearly representing a delayed report (no appreciable reflectivity returns near the report, which was likely sent after the storms moved out or dissipated). To mitigate this, we ended up having to manually verify several hundred reflectivity images. This was very time-consuming and bottlenecked our process, leaving us with a decreased (but verified) sample.
 
 ![Hail report verification process](img/fig2.png)
-Figure 2: From the manual verification process, the top two radar images were rejected for being incomplete or clearly delayed/mismatched. The bottom two were accepted as the domain contains reflectivity returns plausibly matching the hail report, even if the report was slightly delayed.<br>
+Figure 2: From the manual verification process, the top two radar images were rejected for being incomplete or clearly delayed/mismatched. The bottom two were accepted as the domain contains reflectivity returns plausibly matching the hail report, even if the report was slightly delayed.
+
+<br>
 
 As discussed previously, we pivoted away from the KMeans clustering model to instead use a random forest classifier, which we found was more suited to the task. Perhaps due to the sporadic nature of public reports as well as some sources of error that will be mentioned later, no clear clusters could be formed between any two features we developed. Changing our approach, we settled on a random forest classifier model.
 
@@ -141,7 +147,9 @@ max_features = ['sqrt', 'log2']
 Finally, predicting our testing subset with the random forest classifier yielded an F1-score of 0.70. Notably, as seen in Fig. 3 below, the model more often overestimates than underestimates hail size, i.e. it is more likely to erroneously predict significant-severe hail. While the exact numbers are different, a similar bias is seen in MESH, in which we observe more erroneous predictions of large hail than we do of small hail (Wilson et al., 2009). Further comparison to MESH is regrettably difficult due to our pivot away from predicting actual hail size.
 
 ![Validation confusion matrix](img/fig3a.png)![Testing confusion matrix](img/fig3b.png)
-Figure 3: Side-by-side confusion matrices for validation and testing data. The F1-scores were 0.68 and 0.70, respectively.<br>
+Figure 3: Side-by-side confusion matrices for validation and testing data. The F1-scores were 0.68 and 0.70, respectively.
+
+<br>
 
 It is unclear how far this model can be improved given the limitations of public hail reports themselves, but we do believe we have identified some sources of error that could be improved in the future. As alluded to previously, a single randomly selected report does not consistently represent a storm. It could be the peak hail size, some of the smallest hail, or somewhere in-between. A future step we did not previously consider would be to verify that only the largest report from each individual storm would be used, i.e. removing all but the largest report that took place within a certain lat/lon and time. This would prevent some inconsistency in how well the randomly sampled report actually represents its storm. 
 
