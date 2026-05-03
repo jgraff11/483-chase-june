@@ -6,7 +6,7 @@ June Graff<sup>1</sup>, Chase Hunter<sup>1</sup>
 
 ### Abstract
 
-
+This study aimed to improve on existing hail detection algorithms, such as MESH, which exhibit inaccuracies that demand attention. The authors developed a machine learning approach using a random forest classifier model. Hail reports were chosen from SPC's hail report database, then radar imagery was downloaded for each report. The radar imagery was manually verified and the valid images were used to calculate model features for each report. The study was limited by time constraints and a small sample size, leading to poor initial model performance that forced the authors to adjust their original expectations. The resultant model, instead of estimating hail size outright or classifying it into smaller bins, only differentiates severe (1-2") and significant-severe (2"+) hail from radar imagery, which is less useful and hard to compare with current operational algorithms. The resultant model earned an F1-score of 0.70 on the testing data, which was an improvement on early iterations but still has a ways to go. With more time and a smoother verification process for radar imagery, this study could be replicated and perhaps greatly improved.
 
 ### Usage & Replicability:
 
