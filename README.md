@@ -189,7 +189,7 @@ The authors would like to thank Dr. Haberlie for his guidance and patience durin
 
 ### References
 
-Breiman, L., 2001: Random Forests. Machine Learning, 45, 5–32, https://link.springer.com/article/10.1023/A:1010933404324.
+Breiman, L., 2001: Random Forests. Machine Learning, 45, 5–32, https://doi.org/10.1023/A:1010933404324.
 
 Cintineo, J. L., T. M. Smith, V. Lakshmanan, H. E. Brooks, and K. L. Ortega, 2012: An Objective High-Resolution Hail Climatology of the Contiguous United States. Wea. Forecasting, 27, 1235–1248, https://doi.org/10.1175/WAF-D-11-00151.1. 
 
