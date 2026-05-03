@@ -98,6 +98,7 @@ The radar data may have issues of its own. We are not entirely sure that all rad
     </tr>
   </tbody>
 </table>
+Table 1. Timeline Outline
 
 ### 6. Results
 
